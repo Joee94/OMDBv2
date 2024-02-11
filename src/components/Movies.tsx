@@ -1,29 +1,14 @@
 import { Fragment } from "react";
 import { useMovies } from "../hooks";
+import { SearchResults } from "../types";
 
 interface Props {
   query: string;
 }
 
-interface Result {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
-}
-
-interface SearchResults {
-  Response: "True" | "False";
-  Search?: Array<Result>;
-  totalResults?: string;
-  Error?: string;
-}
-
 export const Movies = ({ query }: Props) => {
   const { data, isLoading, isError, isSuccess, fetchNextPage, hasNextPage } =
     useMovies(query);
-
   if (isLoading) return "Loading";
   if (isError) return "Error";
   if (data && isSuccess) {
