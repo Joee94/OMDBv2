@@ -21,8 +21,14 @@ export const Movies = ({ query }: Props) => {
               {group.Search?.map((value) => {
                 return (
                   <li key={value.imdbID} className="card">
-                    <div>{value.Title}</div>
-                    <div>{value.Year}</div>
+                    <img
+                      src={value.Poster}
+                      alt={`${value.Title} - ${value.Year} poster`}
+                    />
+                    <div className="info">
+                      <div>{value.Title}</div>
+                      <div>{value.Year}</div>
+                    </div>
                   </li>
                 );
               })}
