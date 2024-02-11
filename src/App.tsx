@@ -14,8 +14,7 @@ function App() {
 }
 
 const Content = () => {
-  const [query, setQuery] = useState("");
-  console.log(query);
+  const [query, setQuery] = useState(() => "");
   return (
     <>
       <Header setQuery={setQuery} />
