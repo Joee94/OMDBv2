@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header, Movies } from "./components";
 

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
-import { useMovies } from "../hooks";
-import { SearchResults } from "../types";
+import { useMovies } from "@/hooks";
+import { SearchResults } from "@/types";
+import "./movies.css";
 
 interface Props {
   query: string;
@@ -14,15 +15,20 @@ export const Movies = ({ query }: Props) => {
   if (data && isSuccess) {
     return (
       <>
-        {data.pages.map((group: SearchResults, i) => (
-          <Fragment key={i}>
-            <ul>
+        <ul className="cards">
+          {data.pages.map((group: SearchResults, i) => (
+            <Fragment key={i}>
               {group.Search?.map((value) => {
-                return <li key={value.imdbID}>{value.Title}</li>;
+                return (
+                  <li key={value.imdbID} className="card">
+                    <div>{value.Title}</div>
+                    <div>{value.Year}</div>
+                  </li>
+                );
               })}
-            </ul>
-          </Fragment>
-        ))}
+            </Fragment>
+          ))}
+        </ul>
         {hasNextPage && (
           <button onClick={() => fetchNextPage()}>Load more</button>
         )}

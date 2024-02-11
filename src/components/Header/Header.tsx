@@ -1,3 +1,5 @@
+import "./header.css";
+
 interface FormElements extends HTMLFormControlsCollection {
   "movie-search": HTMLInputElement;
 }

@@ -9,4 +9,23 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --white: #fbf5f3;
+  --black: #0f0e0e;
+  --primary-color: #8daa9d;
+  --secondary-color: #522b47;
+  --tertiary-color: #7b0828;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 24px;
 }
