@@ -26,7 +26,7 @@ const getMovies = async ({
   pageParam: number;
 }) => {
   return await fetch(
-    `https://www.omdbapi.com/?apikey=${apikey}&s=${query}&page=${pageParam}`
+    `https://www.omdbapi.com/?apikey=${apikey}&s=${query}&page=${pageParam}`,
   );
 };
 
