@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useMovies } from "@/hooks";
 import { SearchResults } from "@/types";
 import "./movies.css";
+import { Card } from "./Card";
 
 interface Props {
   query: string;
@@ -10,6 +11,9 @@ interface Props {
 export const Movies = ({ query }: Props) => {
   const { data, isLoading, isError, isSuccess, fetchNextPage, hasNextPage } =
     useMovies(query);
+
+  const [open, setOpen] = useState<number | null>(null);
+
   if (isLoading) return "Loading";
   if (isError) return "Error";
   if (data && isSuccess) {
@@ -18,17 +22,14 @@ export const Movies = ({ query }: Props) => {
         <ul className="cards">
           {data.pages.map((group: SearchResults, i) => (
             <Fragment key={i}>
-              {group.Search?.map((value) => {
+              {group.Search?.map((value, index) => {
                 return (
                   <li key={value.imdbID} className="card">
-                    <img
-                      src={value.Poster}
-                      alt={`${value.Title} - ${value.Year} poster`}
+                    <Card
+                      value={value}
+                      open={open === index}
+                      setOpen={() => setOpen(open !== index ? index : null)}
                     />
-                    <div className="info">
-                      <div>{value.Title}</div>
-                      <div>{value.Year}</div>
-                    </div>
                   </li>
                 );
               })}

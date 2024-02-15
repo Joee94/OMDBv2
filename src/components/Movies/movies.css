@@ -1,21 +1,30 @@
 .cards {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%/4, max(300px, 100%/10)), 1fr)
+  );
   gap: 16px;
-  justify-content: space-between;
-  align-items: flex-start;
+}
+
+@media (width <= 1250px) {
+  .cards {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, max(300px, 100%/10)), 1fr)
+    );
+  }
 }
 
 .card {
-  flex: 1;
   background-color: white;
   border-radius: 4px;
-  padding: 8px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
   max-width: 100%;
   max-height: 100%;
   min-width: 300px;
+  height: fit-content;
   object-fit: contain;
 }
 
@@ -26,6 +35,27 @@
 img {
   max-height: 100%;
   max-width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+}
+
+.cardButton {
+  width: 100%;
+}
+
+.wrapper {
+  max-height: 100px;
+  transition: max-height 0.2s ease-in-out;
+  overflow: hidden;
+}
+.wrapper:hover {
+  max-height: 120px;
+}
+
+.wrapper.open {
+  max-height: 1000px;
 }
