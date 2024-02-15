@@ -51,11 +51,53 @@ img {
   max-height: 100px;
   transition: max-height 0.2s ease-in-out;
   overflow: hidden;
+  text-align: center;
+  position: relative;
 }
-.wrapper:hover {
-  max-height: 120px;
+
+caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition: all 0.2s linear;
+  font-size: 1.5rem;
+}
+
+.open caption {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s linear;
+}
+
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 4px 8px;
+  transition: box-shadow 0.2s ease-in-out;
 }
 
 .wrapper.open {
   max-height: 1000px;
+}
+
+.loadMore {
+  width: 100%;
+  background-color: white;
+  color: var(--black);
+  margin-top: 16px;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px;
+}
+
+.loadMore:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 4px 8px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.loadMore:active {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  transition: box-shadow 0.2s ease-in-out;
 }

@@ -37,7 +37,9 @@ export const Movies = ({ query }: Props) => {
           ))}
         </ul>
         {hasNextPage && (
-          <button onClick={() => fetchNextPage()}>Load more</button>
+          <button className="loadMore" onClick={() => fetchNextPage()}>
+            Load more
+          </button>
         )}
       </>
     );
