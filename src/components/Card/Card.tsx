@@ -1,5 +1,6 @@
 import { Result } from "@/types/api";
 import missingPoster from "./missingPoster.png";
+import "./card.css";
 
 interface Props {
   value: Result;

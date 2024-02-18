@@ -4,10 +4,33 @@ header {
   gap: 24px;
   width: 100%;
   margin-bottom: 16px;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
 }
 
 search {
   flex: 1;
+}
+
+search button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 25px;
+  padding: 8px;
+  font-weight: 600;
+}
+
+search input {
+  border-radius: 8px;
+  border: 0;
+  font-size: 1.25rem;
+  padding: 8px;
+}
+
+search label {
+  align-self: center;
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
 form {

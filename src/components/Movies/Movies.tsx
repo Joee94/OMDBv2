@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { useMovies } from "@/hooks";
 import { SearchResults } from "@/types";
 import "./movies.css";
-import { Card } from "./Card";
+import { Card } from "@/components";
 
 interface Props {
   query: string;

@@ -1,0 +1,64 @@
+.card {
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  color: var(--primary-color);
+  font-weight: 800;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 300px;
+  height: fit-content;
+  object-fit: contain;
+}
+
+.info {
+  text-wrap: wrap;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+}
+
+.cardButton {
+  width: 100%;
+}
+
+.wrapper {
+  max-height: 100px;
+  transition: max-height 0.2s ease-in-out;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+}
+
+caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition: all 0.2s linear;
+  font-size: 1.5rem;
+}
+
+.open caption {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s linear;
+}
+
+.wrapper.open {
+  max-height: 1000px;
+}
+
+.card:hover .wrapper:not(.open) {
+  max-height: 120px;
+  transition: max-height 0.2s ease-in-out;
+}
