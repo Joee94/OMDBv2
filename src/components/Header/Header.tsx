@@ -16,7 +16,7 @@ interface Props {
 export const Header = ({ setSearch }: Props) => {
   return (
     <header>
-      <h1>OMdb V2</h1>
+      <h1>OMDb V2</h1>
       <search>
         <form
           onSubmit={(e: React.FormEvent<FormElement>) => {

@@ -5,8 +5,12 @@ header {
   width: 100%;
   margin-bottom: 16px;
   padding: 12px 24px;
-  background-color: var(--primary-color);
+  background-color: var(--off-black);
   text-wrap: nowrap;
+}
+
+header label {
+  color: var(--white);
 }
 search {
   width: 100%;
@@ -20,7 +24,7 @@ search input {
 }
 
 search button {
-  background-color: var(--secondary-color);
+  background-color: var(--accent-color);
   color: var(--primary-color);
   border-radius: 25px;
   padding: 8px;
@@ -66,4 +70,11 @@ form {
 
 input {
   flex: 1;
+}
+
+h1 {
+  background-color: var(--accent-color);
+  padding: 8px;
+  border-radius: 16px;
+  font-size: 2rem;
 }
