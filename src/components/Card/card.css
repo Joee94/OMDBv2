@@ -37,7 +37,7 @@ img {
   position: relative;
 }
 
-caption {
+.missingPoster {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,7 +47,7 @@ caption {
   font-size: 1.5rem;
 }
 
-.open caption {
+.open .missingPoster {
   top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);

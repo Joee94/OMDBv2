@@ -12,7 +12,9 @@ export const Card = ({ value, open, setOpen }: Props) => {
   return (
     <button className={"cardButton"} onClick={setOpen}>
       <div className={`wrapper${open ? " open" : ""}`}>
-        {value.Poster === "N/A" && <caption>Missing Poster</caption>}
+        {value.Poster === "N/A" && (
+          <div className="missingPoster">Missing Poster</div>
+        )}
         <img
           src={value.Poster === "N/A" ? missingPoster : value.Poster}
           alt={`${value.Title} - ${value.Year} poster`}
