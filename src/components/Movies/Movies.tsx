@@ -1,14 +1,14 @@
 import { Fragment, useState } from "react";
 import { useMovies } from "@/hooks";
-import { SearchResults } from "@/types";
+import { Search, SearchResults } from "@/types";
 import "./movies.css";
-import { Card, Skeleton, MovieSkeletons } from "@/components";
+import { Card, MovieSkeletons } from "@/components";
 
 interface Props {
-  query: string;
+  search: Search;
 }
 
-export const Movies = ({ query }: Props) => {
+export const Movies = ({ search }: Props) => {
   const {
     data,
     isLoading,
@@ -17,7 +17,7 @@ export const Movies = ({ query }: Props) => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useMovies(query);
+  } = useMovies(search);
 
   const [open, setOpen] = useState<number | null>(null);
 

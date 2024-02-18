@@ -1,28 +1,31 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { getErrorMessage } from "../utils";
-import { SearchResults } from "../types";
+import { getErrorMessage } from "@/utils";
+import { Search, SearchResults } from "@/types";
 
 const apikey = ""; //DO NOT COMMIT
 const RESULTS_PER_PAGE = 10;
 
-const getMovies = async ({
-  query,
-  pageParam,
-}: {
-  query: string;
+interface GetMoviesProps extends Search {
   pageParam: number;
-}) => {
-  return await fetch(
-    `https://www.omdbapi.com/?apikey=${apikey}&s=${query}&page=${pageParam}`
-  );
+}
+
+const urlBuilder = ({ query, year, type, pageParam }: GetMoviesProps) => {
+  let url = `https://www.omdbapi.com/?apikey=${apikey}&s=${query}&page=${pageParam}`;
+  if (year) url += `&y=${year}`;
+  if (type) url += `&type=${type}`;
+  return url;
 };
 
-export const useMovies = (query: string) => {
+const getMovies = async (search: GetMoviesProps) => {
+  return await fetch(urlBuilder(search));
+};
+
+export const useMovies = (search: Search) => {
   return useInfiniteQuery({
-    queryKey: ["movies", query],
+    queryKey: ["movies", search],
     queryFn: async ({ pageParam }): Promise<SearchResults> => {
       try {
-        const movies = await getMovies({ query, pageParam });
+        const movies = await getMovies({ ...search, pageParam });
         return await movies.json();
       } catch (e) {
         throw new Error(getErrorMessage(e));

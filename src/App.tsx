@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header, Movies } from "./components";
+import { Search } from "./types";
 
 const queryClient = new QueryClient();
 
@@ -13,11 +14,11 @@ function App() {
 }
 
 const Content = () => {
-  const [query, setQuery] = useState(() => "");
+  const [search, setSearch] = useState<null | Search>(null);
   return (
     <>
-      <Header setQuery={setQuery} />
-      <main>{query != "" && <Movies query={query} />}</main>
+      <Header setSearch={setSearch} />
+      <main>{search && <Movies search={search} />}</main>
     </>
   );
 };

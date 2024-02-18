@@ -12,3 +12,10 @@ export interface SearchResults {
   totalResults?: string;
   Error?: string;
 }
+
+export type Type = "movie" | "series" | "episode";
+export interface Search {
+  query: string;
+  type?: Type;
+  year?: number;
+}

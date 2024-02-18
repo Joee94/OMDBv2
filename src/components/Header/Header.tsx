@@ -1,3 +1,4 @@
+import { Search, Type } from "@/types";
 import "./header.css";
 
 interface FormElements extends HTMLFormControlsCollection {
@@ -9,10 +10,10 @@ interface FormElement extends HTMLFormElement {
 }
 
 interface Props {
-  setQuery(query: string): void;
+  setSearch(search: Search): void;
 }
 
-export const Header = ({ setQuery }: Props) => {
+export const Header = ({ setSearch }: Props) => {
   return (
     <header>
       <h1>OMdb V2</h1>
@@ -22,17 +23,32 @@ export const Header = ({ setQuery }: Props) => {
             e.preventDefault();
             const formData = new FormData(e.currentTarget);
 
-            if (
-              formData.has("movie-search") &&
-              formData.get("movie-search") !== null
-            ) {
-              setQuery(formData.get("movie-search") as string);
-            }
+            setSearch({
+              query: formData.get("movie-search") as string,
+              year: Number(formData.get("year")),
+              type: formData.get("type") as Type,
+            });
           }}
         >
-          <label htmlFor="movie">Find a Movie</label>
-          <input type="search" id="movie" name="movie-search" />
-          <button type="submit">Search</button>
+          <div className="search">
+            <label htmlFor="movie">Find a Movie</label>
+            <input type="search" id="movie" name="movie-search" />
+            <button type="submit">Search</button>
+          </div>
+
+          <div className="filters">
+            <label htmlFor="year">Enter a year</label>
+            <input type="number" id="year" name="year" />
+
+            <label htmlFor="type">Choose a type:</label>
+
+            <select name="type" id="type">
+              <option value="">Any</option>
+              <option value="movie">Movie</option>
+              <option value="series">Series</option>
+              <option value="episode">Episode</option>
+            </select>
+          </div>
         </form>
       </search>
     </header>

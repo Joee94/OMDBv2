@@ -1,1 +1,1 @@
-export { type SearchResults } from "./api";
+export { type SearchResults, type Search, type Type } from "./api";

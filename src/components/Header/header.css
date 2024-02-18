@@ -6,10 +6,17 @@ header {
   margin-bottom: 16px;
   padding: 12px 24px;
   background-color: var(--primary-color);
+  text-wrap: nowrap;
+}
+search {
+  width: 100%;
 }
 
-search {
-  flex: 1;
+search input {
+  border-radius: 2px;
+  border: 0;
+  font-size: 1.25rem;
+  padding: 8px;
 }
 
 search button {
@@ -20,14 +27,31 @@ search button {
   font-weight: 600;
 }
 
-search input {
-  border-radius: 8px;
+search select {
+  border-radius: 2px;
   border: 0;
   font-size: 1.25rem;
   padding: 8px;
+  font-size: 1rem;
 }
 
-search label {
+.search,
+.filters {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.filters {
+  max-width: 50%;
+}
+
+.filters input {
+  max-width: 100px;
+  font-size: 1rem;
+}
+
+.search label {
   align-self: center;
   font-size: 1.25rem;
   font-weight: 800;
@@ -35,6 +59,8 @@ search label {
 
 form {
   display: flex;
+  flex-direction: column;
+  justify-content: baseline;
   gap: 8px;
 }
 
