@@ -21,7 +21,7 @@
   --accent-color: #d74a4a;
 
   background-color: var(--off-white);
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,4 +60,7 @@ input:focus {
 
 main {
   padding: 0 24px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

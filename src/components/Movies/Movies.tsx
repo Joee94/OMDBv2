@@ -21,13 +21,18 @@ export const Movies = ({ search }: Props) => {
 
   const [open, setOpen] = useState<number | null>(null);
 
-  console.log(data?.pages);
-
   if (isError) return "Error";
   if (isLoading) {
-    return <MovieSkeletons />;
+    return (
+      <ul className="cards">
+        <MovieSkeletons />
+      </ul>
+    );
   }
   if (data && isSuccess) {
+    if (data.pages[0].Error) {
+      return <p className="empty">{data.pages[0].Error}</p>;
+    }
     return (
       <>
         <ul className="cards">

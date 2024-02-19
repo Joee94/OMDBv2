@@ -38,7 +38,14 @@ export const Header = ({ setSearch }: Props) => {
 
           <div className="filters">
             <label htmlFor="year">Enter a year</label>
-            <input type="number" id="year" name="year" />
+            <input
+              type="number"
+              id="year"
+              name="year"
+              min="1888"
+              step="1"
+              placeholder={new Date().getFullYear().toString()}
+            />
 
             <label htmlFor="type">Choose a type:</label>
 

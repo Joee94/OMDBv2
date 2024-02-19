@@ -42,3 +42,8 @@
   background-color: rgb(141, 141, 141);
   cursor: not-allowed;
 }
+
+.empty {
+  font-size: 2rem;
+  text-align: center;
+}
