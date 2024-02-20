@@ -1,4 +1,4 @@
-import { Result } from "@/types/api";
+import { Result } from "@/types";
 import missingPoster from "./missingPoster.png";
 import "./card.css";
 
