@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 
 export const useUser = () => {
   return useQuery({
-    queryKey: ["login"],
+    queryKey: ["user-info"],
     queryFn: async () => {
-      const data = await fetch("/login");
+      const data = await fetch("/user-info");
       const json = await data.json();
       return json;
     },
