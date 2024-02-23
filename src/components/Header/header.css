@@ -15,7 +15,7 @@ header {
   display: flex;
   background-color: var(--black);
   gap: 24px;
-  padding: 12px;
+  padding: 8px;
   align-items: center;
 }
 
@@ -28,14 +28,6 @@ header input {
   border: 0;
   font-size: 1.25rem;
   padding: 4px;
-}
-
-header button {
-  background-color: var(--accent-color);
-  color: var(--primary-color);
-  border-radius: 25px;
-  padding: 8px;
-  font-weight: 600;
 }
 
 header select {

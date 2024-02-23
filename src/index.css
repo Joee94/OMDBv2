@@ -57,6 +57,27 @@ input:focus {
   outline: 2px solid var(--accent-color);
 }
 
+.containedButton,
+.textButton {
+  padding: 4px 8px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.containedButton {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+.textButton {
+  background: none;
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.textButton:hover {
+  text-decoration: none;
+}
+
 main {
   padding: 0 24px;
   display: flex;

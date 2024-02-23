@@ -1,5 +1,9 @@
 import { Search, Type } from "@/types";
 import "./header.css";
+import { useState } from "react";
+import { createPortal } from "react-dom";
+import { Login } from "@/components";
+import { useUser } from "@/hooks";
 
 interface FormElements extends HTMLFormControlsCollection {
   "movie-search": HTMLInputElement;
@@ -14,6 +18,9 @@ interface Props {
 }
 
 export const Header = ({ setSearch }: Props) => {
+  const [open, setOpen] = useState(false);
+  const { data, isSuccess, refetch } = useUser();
+
   return (
     <header>
       <div className="top">
@@ -35,11 +42,27 @@ export const Header = ({ setSearch }: Props) => {
             <div className="search">
               <label htmlFor="movie">Find a Movie</label>
               <input type="search" id="movie" name="movie-search" />
-              <button type="submit">Search</button>
+              <button type="submit" className="containedButton">
+                Search
+              </button>
             </div>
           </form>
         </search>
-        <a href="/login">Login</a>
+        {isSuccess && data.user ? (
+          <button
+            className="textButton"
+            onClick={() => {
+              fetch("/logout");
+              refetch();
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <button className="textButton" onClick={() => setOpen(true)}>
+            Login
+          </button>
+        )}
       </div>
       <div className="filters">
         <label htmlFor="year">Enter a year</label>
@@ -62,6 +85,8 @@ export const Header = ({ setSearch }: Props) => {
           <option value="episode">Episode</option>
         </select>
       </div>
+      {open &&
+        createPortal(<Login onClose={() => setOpen(false)} />, document.body)}
     </header>
   );
 };
