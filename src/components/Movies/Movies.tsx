@@ -37,21 +37,22 @@ export const Movies = ({ search }: Props) => {
       <>
         <ul className="cards">
           {data.pages.map((group: SearchResults, i) => (
-            <>
-              <Fragment key={i}>
-                {group.Search?.map((value, index) => {
-                  return (
-                    <li key={value.imdbID} className="card">
-                      <Card
-                        value={value}
-                        open={open === index}
-                        setOpen={() => setOpen(open !== index ? index : null)}
-                      />
-                    </li>
-                  );
-                })}
-              </Fragment>
-            </>
+            <Fragment
+              key={`${group.totalResults}${i}${group.Search?.at(-1)?.imdbID}`}
+            >
+              {group.Search?.map((value, j, arr) => {
+                let count = i * arr.length + j;
+                return (
+                  <li key={value.imdbID} className="card">
+                    <Card
+                      value={value}
+                      open={open === count}
+                      setOpen={() => setOpen(open !== count ? count : null)}
+                    />
+                  </li>
+                );
+              })}
+            </Fragment>
           ))}
           {isFetchingNextPage && <MovieSkeletons />}
         </ul>

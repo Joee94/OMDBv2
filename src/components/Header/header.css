@@ -1,29 +1,36 @@
 header {
   display: flex;
-  align-items: center;
-  gap: 24px;
+  justify-content: center;
+  flex-direction: column;
   width: 100%;
   margin-bottom: 16px;
-  padding: 12px 24px;
-  background-color: var(--off-black);
   text-wrap: nowrap;
 }
 
-header label {
+.top label {
   color: var(--white);
 }
+
+.top {
+  display: flex;
+  background-color: var(--off-black);
+  gap: 24px;
+  padding: 12px;
+  align-items: center;
+}
+
 search {
   width: 100%;
 }
 
-search input {
+header input {
   border-radius: 2px;
   border: 0;
   font-size: 1.25rem;
   padding: 8px;
 }
 
-search button {
+header button {
   background-color: var(--accent-color);
   color: var(--primary-color);
   border-radius: 25px;
@@ -31,7 +38,7 @@ search button {
   font-weight: 600;
 }
 
-search select {
+header select {
   border-radius: 2px;
   border: 0;
   font-size: 1.25rem;
@@ -47,7 +54,13 @@ search select {
 }
 
 .filters {
-  max-width: 50%;
+  background-color: var(--accent-color);
+  color: var(--off-black);
+  padding: 12px;
+  border-radius: 0 0 4px 4px;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .filters input {
@@ -74,7 +87,7 @@ input {
 
 h1 {
   background-color: var(--accent-color);
-  padding: 8px;
+  padding: 4px 8px;
   border-radius: 16px;
   font-size: 2rem;
 }

@@ -10,15 +10,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --white: #ffebeb;
-  --black: #241013;
+  --white: #edebff;
+  --black: #101024;
 
   --off-white: rgb(248, 248, 248);
-  --off-black: rgb(17, 14, 14);
+  --off-black: rgb(17, 9, 36);
 
   --primary-color: var(--black);
   --secondary-color: var(--white);
-  --accent-color: #d74a4a;
+  --accent-color: #98bcff;
 
   background-color: var(--off-white);
   color: var(--primary-color);
