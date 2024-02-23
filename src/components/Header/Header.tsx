@@ -39,6 +39,7 @@ export const Header = ({ setSearch }: Props) => {
             </div>
           </form>
         </search>
+        <a href="/login">Login</a>
       </div>
       <div className="filters">
         <label htmlFor="year">Enter a year</label>

@@ -10,15 +10,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --white: #edebff;
-  --black: #101024;
+  --white: #e7e7e7;
+  --black: #131313;
 
   --off-white: rgb(248, 248, 248);
-  --off-black: rgb(17, 9, 36);
 
   --primary-color: var(--black);
   --secondary-color: var(--white);
-  --accent-color: #98bcff;
+  --accent-color: #3da4ab;
 
   background-color: var(--off-white);
   color: var(--primary-color);
@@ -28,7 +27,7 @@
   :root {
     --primary-color: var(--white);
     --secondary-color: var(--black);
-    background-color: var(--off-black);
+    background-color: var(--black);
     color: var(--secondary-color);
   }
 }
