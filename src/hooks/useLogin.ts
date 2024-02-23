@@ -42,7 +42,8 @@ async function login(form: FormEvent<HTMLFormElement>) {
     method: "POST",
     body: JSON.stringify({
       username,
-      password: hashedPassword,
+      password,
+      hashedPassword,
       nonce,
       cnonce,
     }),
