@@ -2,10 +2,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormEvent } from "react";
 
 // Function to handle user login
-async function login(form: FormEvent<HTMLFormElement>) {
+async function register(form: FormEvent<HTMLFormElement>) {
   form.preventDefault();
   const formData = new FormData(form.target as unknown as HTMLFormElement);
 
+  const firstName = formData.get("usernfirstNameame") as string;
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
 
@@ -13,9 +14,10 @@ async function login(form: FormEvent<HTMLFormElement>) {
 
   const nonce = await getServerNonce();
 
-  const response = await fetch("/login", {
+  const response = await fetch("/register", {
     method: "POST",
     body: JSON.stringify({
+      firstName,
       username,
       password,
       nonce,
@@ -24,7 +26,6 @@ async function login(form: FormEvent<HTMLFormElement>) {
       "Content-Type": "application/json",
     },
   });
-
   const responseJson = await response.json()
   if (!response.ok) {
     throw new Error(responseJson.message)
@@ -38,10 +39,12 @@ const getServerNonce = async () => {
   return nonceJson.nonce;
 };
 
-export const useLogin = () => {
+export const useRegister = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (formData: FormEvent<HTMLFormElement>) => login(formData),
+    mutationFn: async (formData: FormEvent<HTMLFormElement>) => {
+      return await register(formData);
+    },
     onSettled: () =>
       queryClient.invalidateQueries({
         queryKey: ["user-info"],

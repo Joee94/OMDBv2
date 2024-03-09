@@ -3,10 +3,13 @@ import express from "express";
 import ViteExpress from "vite-express";
 
 import sessions from "express-session";
-import UserInfoHandler from "./handlers/userInfo.js";
-import LoginHandler from "./handlers/login.js";
-import LogoutHandler from "./handlers/logout.js";
-import NonceHandler from "./handlers/nonce.js";
+import {
+  RegisterHandler,
+  NonceHandler,
+  LogoutHandler,
+  LoginHandler,
+  UserInfoHandler,
+} from "./handlers/index.js";
 
 const app = express();
 
@@ -24,8 +27,9 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.post("/login", LoginHandler);
+app.post("/register", RegisterHandler);
 app.get("/logout", LogoutHandler);
 app.get("/nonce", NonceHandler);
 app.get("/user-info", UserInfoHandler);
 
-ViteExpress.listen(app, 3000, () => console.log("Server is listening..."));
+ViteExpress.listen(app, 3000, () => console.log("Server is listening at http://localhost:3000"));

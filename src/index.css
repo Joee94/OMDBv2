@@ -10,14 +10,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --white: #e7e7e7;
-  --black: #131313;
+  --white-rgb: 231, 231, 231;
+  --black-rgb: 19, 19, 19;
+
+  --white: rgb(var(--white-rgb));
+  --black: rgb(var(--black-rgb));
 
   --off-white: rgb(248, 248, 248);
 
   --primary-color: var(--black);
   --secondary-color: var(--white);
-  --accent-color: #3da4ab;
+
+  --primary-rgb: var(--black-rgb);
+  --secondary-rgb: var(--white-rgb);
+
+  --accent-color: rgb(61, 164, 171);
 
   background-color: var(--off-white);
   color: var(--primary-color);
@@ -28,6 +35,9 @@
     --primary-color: var(--white);
     --secondary-color: var(--black);
     background-color: var(--black);
+
+    --primary-rgb: var(--white-rgb);
+    --secondary-rgb: var(--black-rgb);
     color: var(--secondary-color);
   }
 }
@@ -68,6 +78,7 @@ input:focus {
   background-color: var(--accent-color);
   color: var(--primary-color);
 }
+
 .textButton {
   background: none;
   color: var(--accent-color);

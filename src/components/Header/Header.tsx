@@ -2,7 +2,7 @@ import { Search, Type } from "@/types";
 import "./header.css";
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { Login } from "@/components";
+import { Login, Register } from "@/components";
 import { useUser } from "@/hooks";
 
 interface FormElements extends HTMLFormControlsCollection {
@@ -18,7 +18,8 @@ interface Props {
 }
 
 export const Header = ({ setSearch }: Props) => {
-  const [open, setOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
   const { data, isSuccess, refetch } = useUser();
 
   return (
@@ -51,17 +52,25 @@ export const Header = ({ setSearch }: Props) => {
         {isSuccess && data.user ? (
           <button
             className="textButton"
-            onClick={() => {
-              fetch("/logout");
+            onClick={async () => {
+              await fetch("/logout");
               refetch();
             }}
           >
             Logout
           </button>
         ) : (
-          <button className="textButton" onClick={() => setOpen(true)}>
-            Login
-          </button>
+          <>
+            <button className="textButton" onClick={() => setLoginOpen(true)}>
+              Login
+            </button>
+            <button
+              className="textButton"
+              onClick={() => setRegisterOpen(true)}
+            >
+              Register
+            </button>
+          </>
         )}
       </div>
       <div className="filters">
@@ -85,8 +94,18 @@ export const Header = ({ setSearch }: Props) => {
           <option value="episode">Episode</option>
         </select>
       </div>
-      {open &&
-        createPortal(<Login onClose={() => setOpen(false)} />, document.body)}
+      {loginOpen &&
+        createPortal(
+          <Login onClose={() => {
+            setLoginOpen(false)
+          }} />,
+          document.body
+        )}
+      {registerOpen &&
+        createPortal(
+          <Register onClose={() => setRegisterOpen(false)} />,
+          document.body
+        )}
     </header>
   );
 };

@@ -66,14 +66,14 @@ header select {
   font-weight: 800;
 }
 
-form {
+header form {
   display: flex;
   flex-direction: column;
   justify-content: baseline;
   gap: 8px;
 }
 
-input {
+header input {
   flex: 1;
 }
 
